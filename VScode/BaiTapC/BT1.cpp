@@ -154,6 +154,8 @@ void DayInMonthOfYear(int m, int y){
 }
 int main(){
     system("cls");
+    printf("========================================================");
+    printf("Nhap so n: ");
     int n = 0;
     while (1){
         scanf("%d",&n);
@@ -204,7 +206,6 @@ int main(){
     printf("\n=============================================================");
     printf("\nChuong trinh sau day la chuong trinh tim tong cac chu so cau 1 so \n"); int sumChar =0;
     printf("\nNhap so can tinh tong cac chu so SumChar: "); scanf("%d",&sumChar);
-    printf("\nTong cac ki so la: ");
     sumCharInNumber(sumChar);
     //======================================================================================================
     // Chuong Trinh tim so ngay trong thang
