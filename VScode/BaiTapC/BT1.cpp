@@ -155,7 +155,8 @@ void DayInMonthOfYear(int m, int y){
 int main(){
     system("cls");
     printf("========================================================");
-    printf("Nhap so n: ");
+    printf("\nChuong Trinh Tinh cac chuoi so");
+    printf("\nNhap so n: ");
     int n = 0;
     while (1){
         scanf("%d",&n);
