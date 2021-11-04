@@ -1,9 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+void uocSo(int);
+int giathua(int);
+int Luythua(int,int);
+int S1(int);
+int S2(int);
+int S3(int);
+int S4(int);
+int S5(int);
+int S6(int);
+int S7(int);
+int S8(int);
+int S9(int);
+int S10(int);
+int S11(int);
+int S12(int);
+int maxInFour(int,int,int,int);
+void sumCharInNumber(int);
+void DayInMonthOfYear(int,int);
+float binhPhuong(float);
+float lapPhuong(float);
+float fToC(float);
+void BT6();
+void BTS3_BTCuoiChuong();
+void kiemTraTamGiac();
+void kiemTraTamGiac2();
 int main(){
     system("cls");
-    printf("========================================================");
+    printf("========================================================\n");
+    kiemTraTamGiac2();
+    kiemTraTamGiac();
+    BTS3_BTCuoiChuong();
+    BT6();
     printf("\nChuong Trinh Tinh cac chuoi so");
     printf("\nNhap so n: ");
     int n = 0;
@@ -230,4 +259,135 @@ float lapPhuong(float coSo){
 float fToC(float input){
     return 1.0*(input-32)*(5/9);
 }
-
+void BT6(){
+    char input = NULL;
+    printf("\nNhap 1 ki tu tu ban phim: "); 
+    scanf("%c",&input);
+    if (input <= 'Z'&& input>='A'){
+        printf("\nKet qua: %c",input + ('z'-'Z'));
+    }
+    else if(input <= 'z' && input >= 'a'){
+        printf("\nKet qua: %c",input);
+    }
+    else if(input <= '9' && input >= '0'){
+        printf("\nDay la mot ky so");
+    }
+}
+////////////////////////BAI_TAP_3/////////////////////////////////////
+void SapSep(int n1, int n2, int n3, int n4,int LuaChon){
+    int temp = 0;
+    for (int i =0; i <3; i++){   // Sap sep theo thu tu tang dan
+        if (n1-n2 > 0){
+            temp = n1;
+            n1 = n2;
+            n2 = temp;
+        }
+        if (n2-n3  >0){
+            temp = n2;
+            n2 = n3;
+            n3 = temp;
+        }
+        if (n3-n4 >0){
+            temp = n3;
+            n3 = n4;
+            n4 = temp; 
+        }
+    }
+    switch(LuaChon){
+        case 1:
+        printf("\nTu lon den nho: %d, %d, %d, %d",n4,n3,n2,n1);
+        break;
+        case 2:
+        printf("\nTu nho den lon: %d, %d, %d, %d",n1,n2,n3,n4);
+        break;
+        default:
+        printf("Undefine");
+    }
+}
+void BTS3_BTCuoiChuong(){
+    int n1,n2,n3,n4,temp;
+    while(1){
+        printf("\nMoi Ban nhap 4 so :");
+        printf("\nnhap n1: \n");
+        scanf("%d",&n1);
+        printf("nhap n2: \n");
+        scanf("%d",&n2);
+        printf("nhap n3: \n");
+        scanf("%d",&n3);
+        printf("nhap n4: \n");
+        scanf("%d",&n4);
+        int luaChon = 0;
+        printf("\nMoi ban lua chon thao tac: \n1. Tu lon den nho.\n2. Tu nho den lon.\n3. Ket thuc.\n<>Nhap su lua chon cua ban: \n");
+        scanf("%d",&luaChon);
+        if (luaChon==3){
+            printf("Ket thuc chuong trinh, dai truyen hinh den day la het\n");
+            break;
+        }
+        else{
+            SapSep(n1,n2,n3,n4,luaChon);
+            system("pause"); // Tam ngung xem ket qua
+        }
+        system("cls");  // xoa mang hinh
+    }
+}
+/////////////////////////////////// BT4 ///////////////////////////////////////////////
+void kiemTraTamGiac(){
+    float n1,n2,n3,temp =0;
+    printf("\nNhap cac canh cua tam giac: ");
+    printf("\nCanh thu nhat: "); scanf("%f",&n1);
+    printf("\nCanh thu hai: "); scanf("%f",&n2);
+    printf("\nCanh thu ba: "); scanf("%f",&n3);
+    if(n2-n1 > 0){
+        temp = n1;
+        n1 = n2;
+        n2 = temp;
+    }
+    if(n3-n1 > 0){
+        temp = n1;
+        n1 = n3;
+        n3 = temp;
+    }
+    if (n1 -(n2+n3) >= 0){
+        printf("\n<> Day [khong phai] la mot lam giac");
+    } else{
+        printf("\n<> Day [dung] la mot tam giac");
+    }
+}
+//////////////////////////////////BT5/////////////////////////////////////
+void kiemTraTamGiac2(){
+    float n1,n2,n3,temp =0;
+    printf("\nNhap cac canh cua tam giac: ");
+    printf("\nCanh thu nhat: "); scanf("%f",&n1);
+    printf("\nCanh thu hai: "); scanf("%f",&n2);
+    printf("\nCanh thu ba: "); scanf("%f",&n3);
+    if(n2-n1 > 0){
+        temp = n1;
+        n1 = n2;
+        n2 = temp;
+    }
+    if(n3-n1 > 0){
+        temp = n1;
+        n1 = n3;
+        n3 = temp;
+    }
+    if (n1 -(n2+n3) >= 0){
+        printf("\n<> Day [khong phai] la mot lam giac");
+    } else{
+        if(n1==n2 && n2 == n3){
+            printf("\n<> Day la tam giac deu");
+        }
+        else if (abs((float)n1-pow(pow(n2,2)+pow(n3,2),0.5)<0.001)){     // sai so 0.001
+            printf("\n<> Day la tam giac vuong co canh huyen bang %.3f",n1);
+        }
+        else if (n1==n2){
+            printf("\n<> Day la tam giac can, co do dai hai canh bang nhau la %.3f",n1);
+        }
+        else if (n2==n3){
+            printf("\n<> Day la tam giac can, co do dai hai canh bang nhau la %.3f",n2);
+        }
+        else if (n1==n3){
+            printf("\n<> Day la tam giac can, co do dai hai canh bang nhau la %.3f",n1);
+        }
+        else printf("\n<> Day la tam giac thuong");
+    }
+}
