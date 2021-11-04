@@ -1,6 +1,75 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+int main(){
+    system("cls");
+    printf("========================================================");
+    printf("\nChuong Trinh Tinh cac chuoi so");
+    printf("\nNhap so n: ");
+    int n = 0;
+    while (1){
+        scanf("%d",&n);
+        if (n < 1){
+            printf("Hay nhap so n duong !");
+        } else {
+            break;
+        }
+    }
+    int s1 = S1(n);
+    int s2 = S2(n);
+    int s3 = S3(n);
+    int s4 = S4(n);
+    int s5 = S5(n);
+    int s6 = S6(n);
+    int s7 = S7(n);
+    int s8 = S8(n);
+    int s9 = S9(n);
+    int s10 = S10(n);
+    int s11 = S11(n);
+    int s12 = S12(n);
+    printf("\n Tham sao n la : %d thi ta co S1 la : %d , S2 la : %d , S3 la : %d, S4 la : %d, S5 la: %d, S6 la: %d, S7 la : %d, S8 la : %d, S9 la : %d, S10 la : %d, S11 la : %d, S12 la : %d.",n,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12);
+    //===================================================================================================
+    // Chuong trinh kiem tra ky so, ki tu.
+    printf("\n========================================================================");
+    printf("\nChuong tirnh nay kiem tra ki tu nhap vao.");
+    printf("\nNhap vao ky tu char: ");
+    char thamChieu='y';
+    scanf(" %c", &thamChieu);
+    int thamChieuInt = int(thamChieu);
+    if (thamChieuInt >= int('0') && thamChieuInt <= int('9')){
+        printf("\nKy tu nay la ky so");
+    } else if (thamChieuInt >= int('a') && thamChieuInt <= int('z')){
+        printf("\nKy tu nay la chu thuong");
+    } else if (thamChieuInt >= int('A') && thamChieuInt <= int('Z')){
+        printf("\nKy tu da nhap la chu hoa");
+    } else printf("\nDay la ky tu khac");
+    //=====================================================================================================
+    // Chuogn trinh tim uoc so.
+    printf("\n==========================================================");
+    int soTimUoc = 0;
+    printf("\nNhan so n de tim uoc so cua n= ");
+    scanf("%d",&soTimUoc);
+    printf("\nCac uoc so cua %d la:",soTimUoc);
+    uocSo(soTimUoc);
+    //=====================================================================================================
+    // Chuong trinh tinh tong cac chu so 
+    printf("\n=============================================================");
+    printf("\nChuong trinh sau day la chuong trinh tim tong cac chu so cau 1 so \n"); int sumChar =0;
+    printf("\nNhap so can tinh tong cac chu so SumChar: "); scanf("%d",&sumChar);
+    sumCharInNumber(sumChar);
+    //======================================================================================================
+    // Chuong Trinh tim so ngay trong thang
+    printf("\n===============================================================");
+    printf("\nSAU Day la chuong trinh tinh sao ngay co trong 1 thang");
+    int month = 0;
+    int year = 0;
+    printf("\nNhap vao so thang: "); scanf("%d",&month);
+    printf("\nNhap so nam: ");scanf("%d",&year);
+    DayInMonthOfYear(month,year);
+
+    system("pause");
+    return 0;
+}
 void uocSo (int k){
     printf("dang tim uoc so");
     for (int i = 1; i <=k; i++){
@@ -152,72 +221,13 @@ void DayInMonthOfYear(int m, int y){
         printf("\nThang nay co 31 ngay");
     } else printf("\nThang nay co 30 ngay");
 }
-int main(){
-    system("cls");
-    printf("========================================================");
-    printf("\nChuong Trinh Tinh cac chuoi so");
-    printf("\nNhap so n: ");
-    int n = 0;
-    while (1){
-        scanf("%d",&n);
-        if (n < 1){
-            printf("Hay nhap so n duong !");
-        } else {
-            break;
-        }
-    }
-    int s1 = S1(n);
-    int s2 = S2(n);
-    int s3 = S3(n);
-    int s4 = S4(n);
-    int s5 = S5(n);
-    int s6 = S6(n);
-    int s7 = S7(n);
-    int s8 = S8(n);
-    int s9 = S9(n);
-    int s10 = S10(n);
-    int s11 = S11(n);
-    int s12 = S12(n);
-    printf("\n Tham sao n la : %d thi ta co S1 la : %d , S2 la : %d , S3 la : %d, S4 la : %d, S5 la: %d, S6 la: %d, S7 la : %d, S8 la : %d, S9 la : %d, S10 la : %d, S11 la : %d, S12 la : %d.",n,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12);
-    //===================================================================================================
-    // Chuong trinh kiem tra ky so, ki tu.
-    printf("\n========================================================================");
-    printf("\nChuong tirnh nay kiem tra ki tu nhap vao.");
-    printf("\nNhap vao ky tu char: ");
-    char thamChieu='y';
-    scanf(" %c", &thamChieu);
-    int thamChieuInt = int(thamChieu);
-    if (thamChieuInt >= int('0') && thamChieuInt <= int('9')){
-        printf("\nKy tu nay la ky so");
-    } else if (thamChieuInt >= int('a') && thamChieuInt <= int('z')){
-        printf("\nKy tu nay la chu thuong");
-    } else if (thamChieuInt >= int('A') && thamChieuInt <= int('Z')){
-        printf("\nKy tu da nhap la chu hoa");
-    } else printf("\nDay la ky tu khac");
-    //=====================================================================================================
-    // Chuogn trinh tim uoc so.
-    printf("\n==========================================================");
-    int soTimUoc = 0;
-    printf("\nNhan so n de tim uoc so cua n= ");
-    scanf("%d",&soTimUoc);
-    printf("\nCac uoc so cua %d la:",soTimUoc);
-    uocSo(soTimUoc);
-    //=====================================================================================================
-    // Chuong trinh tinh tong cac chu so 
-    printf("\n=============================================================");
-    printf("\nChuong trinh sau day la chuong trinh tim tong cac chu so cau 1 so \n"); int sumChar =0;
-    printf("\nNhap so can tinh tong cac chu so SumChar: "); scanf("%d",&sumChar);
-    sumCharInNumber(sumChar);
-    //======================================================================================================
-    // Chuong Trinh tim so ngay trong thang
-    printf("\n===============================================================");
-    printf("\nSAU Day la chuong trinh tinh sao ngay co trong 1 thang");
-    int month = 0;
-    int year = 0;
-    printf("\nNhap vao so thang: "); scanf("%d",&month);
-    printf("\nNhap so nam: ");scanf("%d",&year);
-    DayInMonthOfYear(month,year);
-
-    system("pause");
-    return 0;
+float binhPhuong(float coSo){
+    return pow(coSo,2);
 }
+float lapPhuong(float coSo){
+    return pow(coSo,3);
+}
+float fToC(float input){
+    return 1.0*(input-32)*(5/9);
+}
+
