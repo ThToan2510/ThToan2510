@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <windows.h>
+#include <string.h>
+void chuoiKiTu();
+void arr2();
+void arr1();
 void uocSo(int);
 int giathua(int);
 int Luythua(int,int);
@@ -30,6 +33,9 @@ void kiemTraTamGiac2();
 int main(){
     system("cls");
     printf("========================================================\n");
+    chuoiKiTu();
+    arr2();
+    arr1();
     kiemTraTamGiac2();
     kiemTraTamGiac();
     BTS3_BTCuoiChuong();
@@ -391,4 +397,355 @@ void kiemTraTamGiac2(){
         }
         else printf("\n<> Day la tam giac thuong");
     }
+}
+/////////////////////////////////////////////////////////////////////////
+void locateOfMax(int arr[],int n){
+    int max = 0;
+    for(int i = 0 ; i< n; i++){
+        if(max < arr[i]) max = arr[i];
+    }
+    printf("\n<>Max is: %d,Locate of max in array is : ",max);
+    for (int i = 0; i < n; i++){
+        if(arr[i]== max) printf("%d, ",i+1);
+    }
+}
+void minInArr1(int arr[],int n){
+    int minInArr = arr[0];
+    for(int i = 1 ; i<n;i++){
+        if(minInArr > arr[i]) minInArr = arr[i];
+    }
+    printf("\n<>Gia tri nho nhat trong mang la: %d",minInArr);
+}
+void sumIfPosive(int arr[],int n){
+    long sumIfPosive = 0;
+    for (int i =0;i < n; i++){
+        if (arr[i]>0){
+            sumIfPosive+=arr[i];
+        }
+    }
+    printf("\n<>Sum posive in array is: %d",sumIfPosive);
+}
+void soChanInArr(int arr[],int n){
+    printf("\n<>So chan in array la: ");
+    for (int i = 0; i<n;i++){
+        if(arr[i]%2==0) printf("%d, ",arr[i]);
+    }
+}
+void numberOfChiaHetCho3(int arr[],int n){
+    int counter = 0;
+    for(int i =0; i<n;i++){
+        if(arr[i]%3==0) counter ++;
+    }
+    printf("\n<>Number of so chia het cho 3 in array is: %d",counter);
+}
+bool checkAppear(int arr[],int taget,int n){
+    for(int i=0;i<n;i++){
+        if(taget == arr[i]) return 1;
+    }
+    return 0;
+}
+bool checkSoNguyenTo(int taget){
+    if(taget <= 1) return 0;
+    for(int i = 2;i<taget;i++){
+        if(taget%i==0) return 0;
+    }
+    return 1;
+}
+void soNguyenTo(int arr[],int n){
+    printf("\nCac So nguyen to trong array la : ");
+    for(int i = 0 ; i < n ;i++){
+        if(checkSoNguyenTo(arr[i])) printf("%d, ",arr[i]);
+    }
+}
+void numberOfAppear(int arr[],int n){
+    int taget = 0;
+    int locate = -1;
+    int arrDifferane[n];
+    for(int i = 0 ;i<n;i++){
+        arrDifferane[i]=0;
+    }
+    arrDifferane[0]=arr[0];
+    int arrNumberAppear[n];
+    for(int i = 0; i<n;i++){
+        arrNumberAppear[i]=0;
+    }
+    arrNumberAppear[0]=1;
+    int counter = 1;
+    for(int i =1;i<n;i++){
+        taget = arr[i];
+        if(checkAppear(arrDifferane,arr[i],counter)){
+            for(int j = 0; j < counter;j++){
+                if(arrDifferane[j]==taget){
+                    locate = j;
+                    arrNumberAppear[locate]++;
+                }
+            }
+        }else{
+            counter ++;
+            arrDifferane[counter-1]=arr[i];
+            arrNumberAppear[counter -1]=1;
+        }
+    }
+    for (int i = 0 ; i < counter;i++){
+        printf("\n#Phan tu %d xuat hien %d lan.",arrDifferane[i],arrNumberAppear[i]);
+    }
+}
+void tongS1(int arr[],int n){
+    float S1 = 0.0;
+    for(int i =0; i<n;i++){
+        int mauso = 0;
+        for(int j = 0 ; j<= i+1;j++){
+            mauso += j;
+        }
+        S1 += 1.0*((float)arr[i]/(float)mauso);
+    }
+    printf("<>Tong s1 cua array la : %.4f",S1);
+}
+void arr1(){
+    int n=0;
+    int arr[100];
+    long int s=0;
+    printf("\nNhap do dai cua mang");
+    scanf("%d",&n);
+    printf("\nChuong trinh nhap mang va tinh tong");
+    for(int i=0;i<n;i++){
+        printf("\nNhap phan tu thu %d cua mang",i+1);
+        scanf("%d",&arr[i]);
+    }
+    printf("\nMang da nhap la: \n");
+    for(int i=0;i<n;i++){
+        printf("%d ,",arr[i]);
+        s+=arr[i];
+        if(i>0){
+            if(i%5==0) printf("\n");
+        }
+    }
+    printf("\nTong la : %d",s);
+    minInArr1(arr,n);
+    sumIfPosive(arr,n);
+    locateOfMax(arr,n);
+    soChanInArr(arr,n);
+    numberOfChiaHetCho3(arr,n);
+    numberOfAppear(arr,n);
+    soNguyenTo(arr,n);
+    tongS1(arr,n);
+}
+/////////////////////////////////////Mang2Chieu////////////////////////////////////
+void sumArr2(float arr[][10],int h,int c){
+    float sum = 0;
+    for(int i = 0 ; i<h;i++){
+        for(int j = 0; j < c;j++){
+            sum += arr[i][j];
+        }
+    }
+    printf("\n<>Tong arr la: %.4f",sum);
+}
+void maxArr2(float arr[][10],int h,int c){
+    float max = arr[0][0];
+    for(int i = 0 ; i<h;i++){
+        for(int j = 0; j < c;j++){
+            if(max < arr[i][j]) max = arr[i][j];
+        }
+    }
+    printf("\n<>Max in array is: %.4f",max);
+}
+void sumArr2Nagative(float arr[][10],int h, int c){
+    float sumNagative = 0;
+    for(int i = 0 ; i<h;i++){
+        for(int j = 0; j < c;j++){
+            if(arr[i][j]<0) sumNagative += arr[i][j];
+        }
+    }
+    printf("\n<>Sum nagative in array is : %.4f",sumNagative);
+}
+void numberOfPosive(float arr[][10],int h, int c){
+    int number = 0;
+    for(int i = 0 ; i<h;i++){
+        for(int j = 0; j < c;j++){
+            if(arr[i][j]>0) number++;
+        }
+    }
+    printf("\n<>Number of posive in array is: %d",number);
+}
+bool checkAppArr2(float arr[],float taget,int n){
+    for(int i = 0; i < n;i++){
+        if(taget == arr[i]) return 1;
+    }
+    return 0; 
+}
+void numberAppearArr2(float arr[][10],int h, int c){
+    int counter =1;
+    float arrDifferane[100];
+    int numberApp[100];
+    for(int i = 0; i < 100;i++) numberApp[i]=0;
+    for(int i = 0 ; i <100; i++) arrDifferane[i]=0;
+    arrDifferane[0]=arr[0][0];
+    for(int i = 0 ; i<h;i++){
+        for(int j = 0; j<c;j++){
+            if(checkAppArr2(arrDifferane,arr[i][j],counter)){
+                for(int k = 0; k < counter;k++){
+                    if(arr[i][j]==arrDifferane[k]){
+                        numberApp[k]++;
+                    } else;
+                }
+            } else{
+                counter ++;
+                arrDifferane[counter-1]=arr[i][j];
+                numberApp[counter-1]=1;
+            }
+        }
+    }
+    for (int i = 0; i<counter;i++){
+        printf("\n#So %.2f xuat hien %d lan.",arrDifferane[i],numberApp[i]);
+    }
+}
+void soChinhPhuongArr2(float arr[][10],int h,int c){
+    int thamChieu = 0;
+    printf("\n<>Cac so chinh phuong la: ");
+    for(int i = 0 ; i<h;i++){
+        for(int j = 0; j < c;j++){
+            if(arr[i][j]>0){
+                thamChieu = (int)sqrt(arr[i][j]);
+                if((float)pow(thamChieu,2)==arr[i][j]){
+                    printf("%.2f, ",arr[i][j]);
+                }
+            }
+        }
+    }
+}
+void arr2(){
+    printf("\n========================ARR2Line================================");
+    float arr[10][10];
+    int h = 0;
+    int c = 0;
+    printf("\nNhan so hang"); scanf("%d",&h);
+    printf("\nNhap so cot"); scanf("%d",&c);
+    printf("\nNhan cac phan tu cua mang.");
+    for(int i = 0 ; i <h;i++){
+        for(int j = 0; j<c;j++){
+            printf("\nNhan phan tu hang %d, cot %d: ",i+1,j+1); scanf("%f",&arr[i][j]);
+        }
+    }
+    printf("\n<>Mang da nhap la: \n");
+    for(int i = 0 ; i < h;i++){
+        for(int j = 0; j < c;j++){
+            printf("%.2f      ",arr[i][j]);
+        }
+        printf("\n");
+    }
+    sumArr2(arr,h,c);
+    maxArr2(arr,h,c);
+    sumArr2Nagative(arr,h,c);
+    numberOfPosive(arr,h,c);
+    numberAppearArr2(arr,h,c);
+    soChinhPhuongArr2(arr,h,c);
+}
+///////////////////////////////////////////////////////////////////////
+void createNewString(char arr1[],char arr2[]){
+    char arr3[1000];
+    for(int i = 0 ; i< 1000;i++){
+        arr3[i]=0;
+    }
+    char kiTu = NULL;
+    int i =0;
+    while(1){
+        for(int j = 0; j<500;j++){
+            kiTu = arr1[j];
+            if(kiTu != '0'){
+                arr3[j]=kiTu;
+            }
+            else{
+                i = j;
+                break;
+            }
+        }
+        arr3[i]='.';
+        i++;
+        arr3[i]=' ';
+        for(int t = i+1;t<1000;t++){
+            kiTu = arr2[t-(i+1)];
+            if(kiTu != '0'){
+                arr3[t]=kiTu;
+            }
+            else break;
+        }
+        break;
+    }
+    i = 0;
+    printf("\n<> Chuoi moi la: ");
+    while(1){
+        kiTu = arr3[i];
+        if(kiTu != 0){
+            printf("%c",kiTu);
+            i++;
+        }
+        else break;
+    }
+}
+void chuoiKiTu(){
+    printf("\n======================ChuoiKiTu===============================");
+    char kiTu = NULL;
+    char arr1[500]; 
+    char arr2[500];
+    for(int i = 0 ; i<500;i++){
+        arr1[i]='0';
+        arr2[i]='0';
+    }
+    printf("\nNhan chuoi thu 1: ");
+    int i = 0;
+    while(1){
+        kiTu = getchar();
+        if((char)kiTu == '\n'){
+            break;
+        }else{
+            arr1[i]=kiTu;
+            i++;
+        }
+    }
+    i = 0;
+    printf("\nNhap chuoi 2: ");
+    while(1){
+        kiTu = getchar();
+        if((char)kiTu =='\n') break;
+        else{
+            arr2[i]=kiTu;
+            i++;
+        }
+    }
+    i = 0;
+    int length = 0;
+    while(1){
+        kiTu = arr1[i];
+        if(kiTu=='0') break;
+        else{
+            length++;
+            i++;
+        }
+    }
+    printf("\n<>Chieu dai chuoi 1: %d",length);
+    i = 0;
+    length = 0;
+    while(1){
+        kiTu = arr2[i];
+        if(kiTu=='0') break;
+        else{
+            length++;
+            i++;
+        }
+    }
+    printf("\n<>Chieu dai chuoi 2: %d",length);
+    createNewString(arr1, arr2);
+    printf("\nNhap chuoi 1");
+    fgets(arr1,sizeof(arr1),stdin);
+    i = 0;
+    while(1){
+        if(arr1[i]=='\n') {
+            arr1[i]=0;
+            break;
+        } else {
+            i++;
+        }
+    }
+    fgets(arr2,sizeof(arr2),stdin);
+    printf("%s. %s",arr1,arr2);
 }
