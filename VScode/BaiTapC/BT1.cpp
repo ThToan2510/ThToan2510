@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <windows.h>
 void uocSo(int);
 int giathua(int);
 int Luythua(int,int);
